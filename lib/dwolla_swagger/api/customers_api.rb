@@ -25,6 +25,7 @@ module DwollaSwagger
       query_params = {}
       query_params[:'limit'] = opts[:'limit'] if opts[:'limit']
       query_params[:'offset'] = opts[:'offset'] if opts[:'offset']
+      query_params[:'search '] = opts[:'search'] if opts[:'search']
 
       # header parameters
       header_params = {}
