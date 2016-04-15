@@ -20,7 +20,11 @@ module DwollaSwagger
 
       # Account for error messages that take different forms...
       def error_message
-        body['message']
+        ret = body[:message]
+        if(body[:_embedded][:errors])
+          ret = body[:_embedded][:errors].map{|e| "#{e[:message]} "}
+        end
+        ret
       rescue
         body
       end
