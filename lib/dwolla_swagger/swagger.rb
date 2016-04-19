@@ -31,7 +31,11 @@ module DwollaSwagger
         # remove :// from scheme
         configuration.scheme.sub!(/:\/\//, '')
 
-        # remove http(s):// and anything after a slash
+        # remove http(s):// and anything after a slash if it exists, unfreeze string in case it comes from ENV
+        if(configuration.host =~ /https?:\/\//)
+          tmp_host = configuration.host.dup
+          configuration.host = tmp.host.sub!(/https?:\/\//, '')
+        end
         configuration.host = configuration.host.split('/').first
 
         # Add leading and trailing slashes to base_path
