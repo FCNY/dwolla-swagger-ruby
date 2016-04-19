@@ -32,7 +32,6 @@ module DwollaSwagger
         configuration.scheme.sub!(/:\/\//, '')
 
         # remove http(s):// and anything after a slash
-        configuration.host.sub!(/https?:\/\//, '')
         configuration.host = configuration.host.split('/').first
 
         # Add leading and trailing slashes to base_path
